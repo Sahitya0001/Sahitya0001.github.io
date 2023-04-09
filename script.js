@@ -5,9 +5,9 @@ let sound = document.getElementById("volume");
 let copy = document.getElementById("copy");
 let twitter = document.getElementById("twitter");
 
-function randomQuote() {
+async function randomQuote() {
     button.innerText = "Loading Quote...";
-    fetch("http://api.quotable.io/random").then(res => res.json()).then(result => {
+    await fetch("http://api.quotable.io/random").then(res => res.json()).then(result => {
         text.innerText = result.content;
         author.innerText = "-- " + result.author;
         button.innerText = "New Quote";
