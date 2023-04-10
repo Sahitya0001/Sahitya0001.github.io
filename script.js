@@ -5,11 +5,20 @@ let sound = document.getElementById("volume");
 let copy = document.getElementById("copy");
 let twitter = document.getElementById("twitter");
 
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'feaa36a9afmshe79e4c6db161427p101e67jsnea02b0f421fd',
+		'X-RapidAPI-Host': 'famous-quotes4.p.rapidapi.com'
+	}
+};
+
 async function randomQuote() {
     button.innerText = "Loading Quote...";
-    await fetch("http://api.quotable.io/random").then(res => res.json()).then(result => {
-        text.innerText = result.content;
-        author.innerText = "-- " + result.author;
+    await fetch("https://famous-quotes4.p.rapidapi.com/random?category=all&count=1",options).then(res => res.json()).then(result => {
+        //console.log(result);
+        text.innerText = result[0].text;
+        author.innerText = "-- " + result[0].author;
         button.innerText = "New Quote";
     });
 }
